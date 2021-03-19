@@ -1,0 +1,36 @@
+================================================================================
+                                                                    *filetypext*
+
+filetypext_ctx                                                *filetypext_ctx*
+    context parameter.
+
+    Fields: ~
+        {filetype} (string)  file type
+
+
+filetypext_opts                                              *filetypext_opts*
+    optional parameter.
+
+    Fields: ~
+        {base_name} (string)              base file name (default: scratch)
+        {mapping}   (filetypext_mapping)  |filetypext_mapping|
+
+
+filetypext_mapping                                        *filetypext_mapping*
+    filetype to file name formats {make = {"%s.mk", "Makefile"}}
+
+
+filetypext.detect({ctx}, {opts})                         *filetypext.detect()*
+    Detect file name from given context.
+
+
+    Parameters: ~
+        {ctx}  (table)  |filetypext_ctx|
+        {opts} (table)  optional |filetypext_opts|
+
+    Return: ~
+        table: detected file names
+
+
+
+vim:tw=78:ts=8:ft=help
