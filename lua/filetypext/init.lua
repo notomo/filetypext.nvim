@@ -10,6 +10,7 @@ local filetypext = {}
 ---@class filetypext_opts @ optional parameter.
 ---@field base_name string: base file name (default: scratch)
 ---@field mapping filetypext_mapping: |filetypext_mapping|
+---@field fallback_filetype string: filetype for fallback (default: markdown)
 
 ---@class filetypext_mapping @ filetype to file name formats {make = {"%s.mk", "Makefile"}}
 

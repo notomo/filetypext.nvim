@@ -24,6 +24,7 @@ function Mapping.new(opts)
   })
   local tbl = {
     _base_name = opts.base_name or "scratch",
+    _fallback_filetype = opts.fallback_filetype or "markdown",
     _filetypes = vim.tbl_extend("force", Mapping.default, opts.mapping or {}),
   }
   return setmetatable(tbl, Mapping)
@@ -36,7 +37,10 @@ function Mapping.from(self, filetype, bufnr)
   elseif bufnr then
     filetype = vim.bo[bufnr].filetype
   else
-    filetype = "markdown"
+    filetype = self._fallback_filetype
+  end
+  if filetype == "" then
+    filetype = self._fallback_filetype
   end
 
   local names = self._filetypes[filetype] or {}

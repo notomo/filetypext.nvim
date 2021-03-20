@@ -13,8 +13,11 @@ filetypext_opts                                              *filetypext_opts*
     optional parameter.
 
     Fields: ~
-        {base_name} (string)              base file name (default: scratch)
-        {mapping}   (filetypext_mapping)  |filetypext_mapping|
+        {base_name}         (string)              base file name (default:
+                                                  scratch)
+        {mapping}           (filetypext_mapping)  |filetypext_mapping|
+        {fallback_filetype} (string)              filetype for fallback
+                                                  (default: markdown)
 
 
 filetypext_mapping                                        *filetypext_mapping*
