@@ -31,4 +31,21 @@ describe("filetypext", function()
     end)
   end
 
+  for _, c in ipairs({
+    {ctx = {bufnr = 0}, expected = {"scratch.py"}},
+    {ctx = {bufnr = 0, filetype = "go"}, expected = {"scratch.go"}},
+  }) do
+
+    local ctx = vim.inspect(c.ctx, {newline = "", indent = ""})
+    local opts = vim.inspect(c.opts, {newline = "", indent = ""})
+    local expected = vim.inspect(c.expected, {newline = "", indent = ""})
+    local case_name = ([[detect(%s, %s) == %s in python buffer]]):format(ctx, opts, expected)
+
+    it(case_name, function()
+      vim.bo.filetype = "python"
+      local actual = filetypext.detect(c.ctx, c.opts)
+      assert.is_same(c.expected, actual)
+    end)
+  end
+
 end)

@@ -6,6 +6,7 @@ filetypext_ctx                                                *filetypext_ctx*
 
     Fields: ~
         {filetype} (string)  file type
+        {bufnr}    (number)  the number of a buffer
 
 
 filetypext_opts                                              *filetypext_opts*

@@ -5,6 +5,7 @@ local filetypext = {}
 
 ---@class filetypext_ctx @ context parameter.
 ---@field filetype string: file type
+---@field bufnr number: the number of a buffer
 
 ---@class filetypext_opts @ optional parameter.
 ---@field base_name string: base file name (default: scratch)

@@ -24,7 +24,7 @@ function Command.detect(ctx, opts)
   vim.validate({ctx = {ctx, "table", true}, opts = {opts, "table", true}})
   ctx = ctx or {}
   opts = opts or {}
-  return Mapping.new(opts):from(ctx.filetype)
+  return Mapping.new(opts):from(ctx.filetype, ctx.bufnr)
 end
 
 return M

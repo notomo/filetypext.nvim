@@ -29,9 +29,15 @@ function Mapping.new(opts)
   return setmetatable(tbl, Mapping)
 end
 
-function Mapping.from(self, filetype)
-  vim.validate({filetype = {filetype, "string", true}})
-  filetype = filetype or "markdown"
+function Mapping.from(self, filetype, bufnr)
+  vim.validate({filetype = {filetype, "string", true}, bufnr = {bufnr, "number", true}})
+  if filetype then
+    filetype = filetype
+  elseif bufnr then
+    filetype = vim.bo[bufnr].filetype
+  else
+    filetype = "markdown"
+  end
 
   local names = self._filetypes[filetype] or {}
   if not names[1] then
