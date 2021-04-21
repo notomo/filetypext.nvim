@@ -1,9 +1,5 @@
 local helper = require("filetypext.lib.testlib.helper")
-local filetypext = setmetatable({}, {
-  __index = function(_, k)
-    return require("filetypext")[k]
-  end,
-})
+local filetypext = helper.require("filetypext")
 
 describe("filetypext", function()
 

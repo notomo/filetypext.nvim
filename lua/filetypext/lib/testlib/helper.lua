@@ -1,9 +1,9 @@
-local M = {}
+local plugin_name = vim.split((...):gsub("%.", "/"), "/", true)[1]
+local M = require("vusted.helper")
 
-M.root = require("filetypext.lib.path").find_root()
+M.root = M.find_plugin_root(plugin_name)
 
 function M.before_each()
-  require("filetypext.lib.module").cleanup()
   vim.cmd("filetype on")
   vim.cmd("syntax enable")
 end
@@ -14,6 +14,7 @@ function M.after_each()
   vim.cmd("silent! %bwipeout!")
   vim.cmd("filetype off")
   vim.cmd("syntax off")
+  M.cleanup_loaded_modules(plugin_name)
 end
 
 function M.set_lines(lines)
