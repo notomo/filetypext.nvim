@@ -8,7 +8,7 @@ Command.__index = Command
 M.Command = Command
 
 function Command.new(name, ...)
-  local args = {...}
+  local args = { ... }
   local f = function()
     return Command[name](unpack(args))
   end
@@ -21,7 +21,7 @@ function Command.new(name, ...)
 end
 
 function Command.detect(ctx, opts)
-  vim.validate({ctx = {ctx, "table", true}, opts = {opts, "table", true}})
+  vim.validate({ ctx = { ctx, "table", true }, opts = { opts, "table", true } })
   ctx = ctx or {}
   opts = opts or {}
   return Mapping.new(opts):from(ctx.filetype, ctx.bufnr)

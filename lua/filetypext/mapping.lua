@@ -5,22 +5,22 @@ Mapping.__index = Mapping
 M.Mapping = Mapping
 
 Mapping.default = {
-  python = {"%s.py"},
-  make = {"Makefile", "%s.mk"},
-  dockerfile = {"Dockerfile"},
-  rust = {"%s.rs"},
-  ruby = {"%s.rb"},
-  markdown = {"%s.md"},
-  javascript = {"%s.js"},
-  typescript = {"%s.ts"},
-  text = {"%s.txt"},
+  python = { "%s.py" },
+  make = { "Makefile", "%s.mk" },
+  dockerfile = { "Dockerfile" },
+  rust = { "%s.rs" },
+  ruby = { "%s.rb" },
+  markdown = { "%s.md" },
+  javascript = { "%s.js" },
+  typescript = { "%s.ts" },
+  text = { "%s.txt" },
 }
 
 function Mapping.new(opts)
-  vim.validate({opts = {opts, "table"}})
+  vim.validate({ opts = { opts, "table" } })
   vim.validate({
-    base_name = {opts.base_name, "string", true},
-    mapping = {opts.mapping, "table", true},
+    base_name = { opts.base_name, "string", true },
+    mapping = { opts.mapping, "table", true },
   })
   local tbl = {
     _base_name = opts.base_name or "scratch",
@@ -31,7 +31,7 @@ function Mapping.new(opts)
 end
 
 function Mapping.from(self, filetype, bufnr)
-  vim.validate({filetype = {filetype, "string", true}, bufnr = {bufnr, "number", true}})
+  vim.validate({ filetype = { filetype, "string", true }, bufnr = { bufnr, "number", true } })
   if filetype then
     filetype = filetype
   elseif bufnr then
@@ -45,7 +45,7 @@ function Mapping.from(self, filetype, bufnr)
 
   local names = self._filetypes[filetype] or {}
   if not names[1] then
-    return {("%s.%s"):format(self._base_name, filetype)}
+    return { ("%s.%s"):format(self._base_name, filetype) }
   end
 
   return vim.tbl_map(function(name)
