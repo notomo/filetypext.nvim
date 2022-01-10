@@ -1,40 +1,34 @@
-================================================================================
-                                                                    *filetypext*
+*filetypext.nvim.txt*
 
-filetypext_ctx                                                *filetypext_ctx*
-    context parameter.
+==============================================================================
+Lua module: filetypext                            *filetypext.nvim-filetypext*
 
-    Fields: ~
-        {filetype} (string)  file type
-        {bufnr}    (number)  the number of a buffer
+detect({ctx}, {opts})                                    *filetypext.detect()*
+  Detect file name from given context.
 
+  Parameters: ~
+    {ctx} (table) |filetypext.nvim-ctx|
+    {opts} (table|nil) |filetypext.nvim-opts|
 
-filetypext_opts                                              *filetypext_opts*
-    optional parameter.
+  Return: ~
+    (table) detected file names
 
-    Fields: ~
-        {base_name}         (string)              base file name (default:
-                                                  scratch)
-        {mapping}           (filetypext_mapping)  |filetypext_mapping|
-        {fallback_filetype} (string)              filetype for fallback
-                                                  (default: markdown)
+==============================================================================
+TYPES                                                  *filetypext.nvim-TYPES*
 
+Context                                                  *filetypext.nvim-ctx*
 
-filetypext_mapping                                        *filetypext_mapping*
-    filetype to file name formats {make = {"%s.mk", "Makefile"}}
+- {bufnr} (number | nil): the number of a buffer
+- {filetype} (string | nil): file type
 
+Option                                                  *filetypext.nvim-opts*
 
-filetypext.detect({ctx}, {opts})                         *filetypext.detect()*
-    Detect file name from given context.
+- {base_name} (string | nil): base file name.
+    default: "scratch"
+- {fallback_filetype} (string | nil): filetype for fallback.
+    default: "markdown"
+- {mapping} (table | nil): filetype to file name formats.
+    example: {make = {"nil.mk", "Makefile"}}
 
-
-    Parameters: ~
-        {ctx}  (table)  |filetypext_ctx|
-        {opts} (table)  optional |filetypext_opts|
-
-    Return: ~
-        table: detected file names
-
-
-
+==============================================================================
 vim:tw=78:ts=8:ft=help

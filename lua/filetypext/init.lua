@@ -1,25 +1,13 @@
 local Command = require("filetypext.command").Command
 
----@tag filetypext
-local filetypext = {}
-
----@class filetypext_ctx @ context parameter.
----@field filetype string: file type
----@field bufnr number: the number of a buffer
-
----@class filetypext_opts @ optional parameter.
----@field base_name string: base file name (default: scratch)
----@field mapping filetypext_mapping: |filetypext_mapping|
----@field fallback_filetype string: filetype for fallback (default: markdown)
-
----@class filetypext_mapping @ filetype to file name formats {make = {"%s.mk", "Makefile"}}
+local M = {}
 
 ---Detect file name from given context.
----@param ctx table: |filetypext_ctx|
----@param opts table: optional |filetypext_opts|
+---@param ctx table: |filetypext.nvim-ctx|
+---@param opts table|nil: |filetypext.nvim-opts|
 ---@return table: detected file names
-function filetypext.detect(ctx, opts)
+function M.detect(ctx, opts)
   return Command.new("detect", ctx, opts)
 end
 
-return filetypext
+return M
