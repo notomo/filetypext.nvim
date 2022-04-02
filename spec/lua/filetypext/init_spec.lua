@@ -1,4 +1,4 @@
-local helper = require("filetypext.lib.testlib.helper")
+local helper = require("filetypext.test.helper")
 local filetypext = helper.require("filetypext")
 
 describe("filetypext", function()
