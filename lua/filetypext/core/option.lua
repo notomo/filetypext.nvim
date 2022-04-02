@@ -3,7 +3,17 @@ local M = {}
 M.default = {
   base_name = "scratch",
   fallback_filetype = "markdown",
-  mapping = {},
+  mapping = {
+    python = { "%s.py" },
+    make = { "Makefile", "%s.mk" },
+    dockerfile = { "Dockerfile" },
+    rust = { "%s.rs" },
+    ruby = { "%s.rb" },
+    markdown = { "%s.md" },
+    javascript = { "%s.js" },
+    typescript = { "%s.ts" },
+    text = { "%s.txt" },
+  },
 }
 
 function M.new(raw_opts)
