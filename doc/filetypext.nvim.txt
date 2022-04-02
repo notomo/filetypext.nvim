@@ -31,4 +31,12 @@ Option                                                  *filetypext.nvim-opts*
     example: {make = {"nil.mk", "Makefile"}}
 
 ==============================================================================
+EXAMPLES                                            *filetypext.nvim-EXAMPLES*
+
+>
+  local file_name = require("filetypext").detect({ filetype = "python" })[1]
+  vim.cmd([[edit ]] .. file_name) -- edit scratch.py
+<
+
+==============================================================================
 vim:tw=78:ts=8:ft=help

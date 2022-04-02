@@ -1,9 +1,11 @@
 local util = require("genvdoc.util")
-
-vim.o.runtimepath = vim.fn.getcwd() .. "," .. vim.o.runtimepath
 local plugin_name = vim.env.PLUGIN_NAME
+local full_plugin_name = plugin_name .. ".nvim"
 
-require("genvdoc").generate(plugin_name .. ".nvim", {
+local example_path = ("./spec/lua/%s/example.lua"):format(plugin_name)
+dofile(example_path)
+
+require("genvdoc").generate(full_plugin_name, {
   sources = { { name = "lua", pattern = ("lua/%s/init.lua"):format(plugin_name) } },
   chapters = {
     {
@@ -52,12 +54,27 @@ require("genvdoc").generate(plugin_name .. ".nvim", {
         })
       end,
     },
+    {
+      name = "EXAMPLES",
+      body = function()
+        return util.help_code_block_from_file(example_path)
+      end,
+    },
   },
 })
 
 local gen_readme = function()
-  local content = [[
-file type -> file names]]
+  local f = io.open(example_path, "r")
+  local exmaple = f:read("*a")
+  local content = ([[
+# %s
+
+file type -> file names
+
+## Example
+
+```lua
+%s```]]):format(full_plugin_name, exmaple)
 
   local readme = io.open("README.md", "w")
   readme:write(content)
