@@ -17,15 +17,10 @@ Mapping.default = {
 }
 
 function Mapping.new(opts)
-  vim.validate({ opts = { opts, "table" } })
-  vim.validate({
-    base_name = { opts.base_name, "string", true },
-    mapping = { opts.mapping, "table", true },
-  })
   local tbl = {
-    _base_name = opts.base_name or "scratch",
-    _fallback_filetype = opts.fallback_filetype or "markdown",
-    _filetypes = vim.tbl_extend("force", Mapping.default, opts.mapping or {}),
+    _base_name = opts.base_name,
+    _fallback_filetype = opts.fallback_filetype,
+    _filetypes = vim.tbl_extend("force", Mapping.default, opts.mapping),
   }
   return setmetatable(tbl, Mapping)
 end
