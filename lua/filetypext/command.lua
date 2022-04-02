@@ -4,7 +4,7 @@ function ReturnValue.detect(ctx, raw_opts)
   vim.validate({ ctx = { ctx, "table", true } })
   ctx = ctx or {}
   local opts = require("filetypext.core.option").new(raw_opts)
-  return require("filetypext.mapping").Mapping.new(opts):from(ctx.filetype, ctx.bufnr)
+  return require("filetypext.core.mapping").Mapping.new(opts):from(ctx.filetype, ctx.bufnr)
 end
 
 return ReturnValue:methods()
