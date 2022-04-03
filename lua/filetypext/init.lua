@@ -1,11 +1,10 @@
 local M = {}
 
----Detect file name from given context.
----@param ctx table: |filetypext.nvim-ctx|
+---Detect file name.
 ---@param opts table|nil: |filetypext.nvim-opts|
 ---@return table: detected file names
-function M.detect(ctx, opts)
-  return require("filetypext.command").detect(ctx, opts)
+function M.detect(opts)
+  return require("filetypext.command").detect(opts)
 end
 
 return M

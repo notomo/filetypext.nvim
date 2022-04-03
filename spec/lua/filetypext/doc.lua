@@ -22,34 +22,25 @@ require("genvdoc").generate(full_plugin_name, {
     {
       name = "TYPES",
       body = function(ctx)
-        local ctx_text
+        local opts_text
         do
           local descriptions = {
             filetype = [[(string | nil): file type]],
             bufnr = [[(number | nil): the number of a buffer]],
-          }
-          local keys = vim.tbl_keys(descriptions)
-          local lines = util.each_keys_description(keys, descriptions)
-          ctx_text = table.concat(lines, "\n")
-        end
-
-        local opts_text
-        do
-          local descriptions = {
             base_name = [[(string | nil): base file name.
-    default: "scratch"]],
+    default: %s]],
             mapping = [[(table | nil): filetype to file name formats.
-    example: {make = {"%s.mk", "Makefile"}}]],
+    default: %s]],
             fallback_filetype = [[(string | nil): filetype for fallback.
-    default: "markdown"]],
+    default: %s]],
           }
+          local default = require("filetypext.core.option").default
           local keys = vim.tbl_keys(descriptions)
-          local lines = util.each_keys_description(keys, descriptions)
+          local lines = util.each_keys_description(keys, descriptions, default)
           opts_text = table.concat(lines, "\n")
         end
 
         return util.sections(ctx, {
-          { name = "Context", tag_name = "ctx", text = ctx_text },
           { name = "Option", tag_name = "opts", text = opts_text },
         })
       end,

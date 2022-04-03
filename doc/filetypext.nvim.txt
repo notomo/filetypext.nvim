@@ -3,11 +3,10 @@
 ==============================================================================
 Lua module: filetypext                            *filetypext.nvim-filetypext*
 
-detect({ctx}, {opts})                                    *filetypext.detect()*
-  Detect file name from given context.
+detect({opts})                                           *filetypext.detect()*
+  Detect file name.
 
   Parameters: ~
-    {ctx} (table) |filetypext.nvim-ctx|
     {opts} (table|nil) |filetypext.nvim-opts|
 
   Return: ~
@@ -16,19 +15,26 @@ detect({ctx}, {opts})                                    *filetypext.detect()*
 ==============================================================================
 TYPES                                                  *filetypext.nvim-TYPES*
 
-Context                                                  *filetypext.nvim-ctx*
-
-- {bufnr} (number | nil): the number of a buffer
-- {filetype} (string | nil): file type
-
 Option                                                  *filetypext.nvim-opts*
 
 - {base_name} (string | nil): base file name.
     default: "scratch"
+- {bufnr} (number | nil): the number of a buffer
 - {fallback_filetype} (string | nil): filetype for fallback.
     default: "markdown"
+- {filetype} (string | nil): file type
 - {mapping} (table | nil): filetype to file name formats.
-    example: {make = {"nil.mk", "Makefile"}}
+    default: {
+  dockerfile = { "Dockerfile" },
+  javascript = { "%s.js" },
+  make = { "Makefile", "%s.mk" },
+  markdown = { "%s.md" },
+  python = { "%s.py" },
+  ruby = { "%s.rb" },
+  rust = { "%s.rs" },
+  text = { "%s.txt" },
+  typescript = { "%s.ts" }
+}
 
 ==============================================================================
 EXAMPLES                                            *filetypext.nvim-EXAMPLES*
