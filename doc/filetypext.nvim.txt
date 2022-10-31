@@ -33,7 +33,9 @@ Option                                                  *filetypext.nvim-opts*
   ruby = { "%s.rb" },
   rust = { "%s.rs" },
   text = { "%s.txt" },
-  typescript = { "%s.ts" }
+  typescript = { "%s.ts" },
+  ["typescript.tsx"] = { "%s.tsx" },
+  typescriptreact = { "%s.tsx" }
 }
 
 ==============================================================================
