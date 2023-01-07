@@ -15,6 +15,8 @@ M.default = {
     ["typescript.tsx"] = { "%s.tsx" },
     ["typescriptreact"] = { "%s.tsx" },
     text = { "%s.txt" },
+    gomod = { "go.mod" },
+    ocaml = { "%s.ml" },
   },
   filetype = nil,
   bufnr = nil,
