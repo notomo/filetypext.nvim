@@ -25,13 +25,18 @@ Option                                                  *filetypext.nvim-opts*
 - {filetype} (string | nil): file type
 - {mapping} (table | nil): filetype to file name formats.
     default: {
+  autohotkey = { "%s.ahk" },
   dockerfile = { "Dockerfile" },
+  gitignore = { ".gitignore" },
+  gomod = { "go.mod" },
   javascript = { "%s.js" },
   make = { "Makefile", "%s.mk" },
   markdown = { "%s.md" },
+  ocaml = { "%s.ml" },
   python = { "%s.py" },
   ruby = { "%s.rb" },
   rust = { "%s.rs" },
+  terraform = { "%s.tf" },
   text = { "%s.txt" },
   typescript = { "%s.ts" },
   ["typescript.tsx"] = { "%s.tsx" },
