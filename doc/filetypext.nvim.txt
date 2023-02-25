@@ -7,41 +7,52 @@ detect({opts})                                           *filetypext.detect()*
   Detect file name.
 
   Parameters: ~
-    {opts} (table|nil) |filetypext.nvim-opts|
+    {opts} (FiletypextDetectOption?) |FiletypextDetectOption|
 
   Return: ~
-    (table) detected file names
+    (string[]) detected file names
 
 ==============================================================================
-TYPES                                                  *filetypext.nvim-TYPES*
+STRUCTURE                                          *filetypext.nvim-STRUCTURE*
 
-Option                                                  *filetypext.nvim-opts*
+FiletypextDetectOption                                *FiletypextDetectOption*
+  See |filetypext.nvim-DEFAULT_OPTION| for all default options.
 
-- {base_name} (string | nil): base file name.
-    default: "scratch"
-- {bufnr} (number | nil): the number of a buffer
-- {fallback_filetype} (string | nil): filetype for fallback.
-    default: "markdown"
-- {filetype} (string | nil): file type
-- {mapping} (table | nil): filetype to file name formats.
-    default: {
-  autohotkey = { "%s.ahk" },
-  dockerfile = { "Dockerfile" },
-  gitignore = { ".gitignore" },
-  gomod = { "go.mod" },
-  javascript = { "%s.js" },
-  make = { "Makefile", "%s.mk" },
-  markdown = { "%s.md" },
-  ocaml = { "%s.ml" },
-  python = { "%s.py" },
-  ruby = { "%s.rb" },
-  rust = { "%s.rs" },
-  terraform = { "%s.tf" },
-  text = { "%s.txt" },
-  typescript = { "%s.ts" },
-  ["typescript.tsx"] = { "%s.tsx" },
-  typescriptreact = { "%s.tsx" }
-}
+- {base_name} (string?) base file name.
+- {bufnr} (integer?) the number of a buffer
+- {fallback_filetype} (string?) filetype for fallback.
+- {filetype} (string?) file type
+- {mapping} (table<string,string[]>?) filetype to file name formats.
+
+==============================================================================
+DEFAULT_OPTION                                *filetypext.nvim-DEFAULT_OPTION*
+
+>lua
+  local all_detect_options = {
+    base_name = "scratch",
+    fallback_filetype = "markdown",
+    mapping = {
+      python = { "%s.py" },
+      make = { "Makefile", "%s.mk" },
+      dockerfile = { "Dockerfile" },
+      rust = { "%s.rs" },
+      ruby = { "%s.rb" },
+      markdown = { "%s.md" },
+      javascript = { "%s.js" },
+      typescript = { "%s.ts" },
+      ["typescript.tsx"] = { "%s.tsx" },
+      ["typescriptreact"] = { "%s.tsx" },
+      text = { "%s.txt" },
+      gomod = { "go.mod" },
+      ocaml = { "%s.ml" },
+      terraform = { "%s.tf" },
+      autohotkey = { "%s.ahk" },
+      gitignore = { ".gitignore" },
+    },
+    filetype = nil,
+    bufnr = nil,
+  }
+<
 
 ==============================================================================
 EXAMPLES                                            *filetypext.nvim-EXAMPLES*

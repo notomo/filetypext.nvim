@@ -1,6 +1,6 @@
 local M = {}
 
-M.default = {
+local default = {
   base_name = "scratch",
   fallback_filetype = "markdown",
   mapping = {
@@ -38,7 +38,7 @@ end
 function M.new(raw_opts)
   vim.validate({ raw_opts = { raw_opts, "table", true } })
   raw_opts = raw_opts or {}
-  local opts = vim.tbl_deep_extend("force", M.default, raw_opts)
+  local opts = vim.tbl_deep_extend("force", default, raw_opts)
   opts.filetype = _filetype(opts.filetype, opts.bufnr)
   vim.validate({
     base_name = { opts.base_name, "string" },
