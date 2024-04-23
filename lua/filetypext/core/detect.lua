@@ -10,9 +10,12 @@ function Detect.file_names(base_name, filetype, fallback_filetype, mapping)
     return { ("%s.%s"):format(base_name, filetype) }
   end
 
-  return vim.tbl_map(function(name)
-    return name:format(base_name)
-  end, names)
+  return vim
+    .iter(names)
+    :map(function(name)
+      return name:format(base_name)
+    end)
+    :totable()
 end
 
 return Detect
