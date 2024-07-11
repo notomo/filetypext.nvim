@@ -12,6 +12,7 @@ local default = {
     markdown = { "%s.md" },
     javascript = { "%s.js" },
     typescript = { "%s.ts" },
+    ["javascriptreact"] = { "%s.jsx" },
     ["typescript.tsx"] = { "%s.tsx" },
     ["typescriptreact"] = { "%s.tsx" },
     text = { "%s.txt" },
