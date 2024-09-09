@@ -1,5 +1,6 @@
 local helper = require("filetypext.test.helper")
 local filetypext = helper.require("filetypext")
+local assert = require("assertlib").typed(assert)
 
 describe("filetypext", function()
   before_each(helper.before_each)
@@ -23,7 +24,7 @@ describe("filetypext", function()
 
     it(case_name, function()
       local actual = filetypext.detect(c.opts)
-      assert.is_same(c.expected, actual)
+      assert.same(c.expected, actual)
     end)
   end
 
@@ -44,7 +45,7 @@ describe("filetypext", function()
     it(case_name, function()
       vim.bo.filetype = c.filetype
       local actual = filetypext.detect(c.opts)
-      assert.is_same(c.expected, actual)
+      assert.same(c.expected, actual)
     end)
   end
 end)
