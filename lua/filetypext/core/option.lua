@@ -37,16 +37,9 @@ local _filetype = function(filetype, bufnr)
 end
 
 function M.new(raw_opts)
-  vim.validate({ raw_opts = { raw_opts, "table", true } })
   raw_opts = raw_opts or {}
   local opts = vim.tbl_deep_extend("force", default, raw_opts)
   opts.filetype = _filetype(opts.filetype, opts.bufnr)
-  vim.validate({
-    base_name = { opts.base_name, "string" },
-    fallback_filetype = { opts.fallback_filetype, "string" },
-    mapping = { opts.mapping, "table" },
-    filetype = { opts.filetype, "string", true },
-  })
   return opts
 end
 
