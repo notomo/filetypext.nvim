@@ -4,6 +4,9 @@ local full_plugin_name = plugin_name .. ".nvim"
 
 local example_path = ("./spec/lua/%s/example.lua"):format(plugin_name)
 local example = vim.trim(util.read_all(example_path))
+
+---@diagnostic disable-next-line: duplicate-set-field
+vim.treesitter.start = function() end
 util.execute(example)
 
 local default_option_as_text = "local all_detect_options = "
