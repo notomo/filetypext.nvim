@@ -21,6 +21,7 @@ local default = {
     terraform = { "%s.tf" },
     autohotkey = { "%s.ahk" },
     gitignore = { ".gitignore" },
+    moonbit = { "%s.mbt" },
   },
   filetype = nil,
   bufnr = nil,
