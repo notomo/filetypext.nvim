@@ -49,6 +49,7 @@ DEFAULT_OPTION                                *filetypext.nvim-DEFAULT_OPTION*
       terraform = { "%s.tf" },
       autohotkey = { "%s.ahk" },
       gitignore = { ".gitignore" },
+      moonbit = { "%s.mbt" },
     },
     filetype = nil,
     bufnr = nil,
